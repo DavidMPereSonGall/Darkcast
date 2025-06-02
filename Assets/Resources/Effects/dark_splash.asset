@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b98298a6e99a09469d693f2355e8a17, type: 3}
+  m_Name: dark_splash
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -70826559, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1688415859, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: 394147491, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: 1963226391, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1034884977, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -927205412, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -405938986, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -607823572, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1351505942, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1944018262, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: 1850768568, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1099835613, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  - {fileID: -1838655616, guid: 54b33ec6f98c42b479b2effb8c2fb3b7, type: 3}
+  frameStep: 1
+  effectType: 2
+  size: 3

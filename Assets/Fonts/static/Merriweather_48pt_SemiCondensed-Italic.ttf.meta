@@ -1,0 +1,28 @@
+fileFormatVersion: 2
+guid: a5309863a245ee84e8f356180450b4a3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Merriweather 48pt SemiCondensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: d316a68a748d2534991e514734d34672, type: 3}
+  - {fileID: 12800000, guid: 41f593c2ee44389429972ff11b768bce, type: 3}
+  - {fileID: 12800000, guid: 12a613f50c070144ea14e516be784b19, type: 3}
+  - {fileID: 12800000, guid: 80ba022fd898c9145934e42ff6817ab9, type: 3}
+  - {fileID: 12800000, guid: 91a3ded27c29c8f49bfdf033e2fd007e, type: 3}
+  - {fileID: 12800000, guid: a4505efedacc8be4aa1cbd8494ea1070, type: 3}
+  - {fileID: 12800000, guid: 1311c9111cb838c46b11bf57fd36a123, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

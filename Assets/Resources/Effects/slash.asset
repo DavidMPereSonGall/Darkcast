@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b98298a6e99a09469d693f2355e8a17, type: 3}
+  m_Name: slash
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 781412670, guid: cce19ddd0dce0f947b9ce244625d4172, type: 3}
+  - {fileID: -128147680, guid: cce19ddd0dce0f947b9ce244625d4172, type: 3}
+  - {fileID: -118872263, guid: cce19ddd0dce0f947b9ce244625d4172, type: 3}
+  - {fileID: 92620648, guid: cce19ddd0dce0f947b9ce244625d4172, type: 3}
+  frameStep: 1
+  effectType: 0
+  size: 2

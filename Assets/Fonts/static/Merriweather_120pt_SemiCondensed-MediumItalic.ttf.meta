@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: c03284575a6127f4cad64c4e420a4035
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Merriweather 120pt SemiCondensed
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 60b0824bf3be7e54eae6182f6100a1db, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

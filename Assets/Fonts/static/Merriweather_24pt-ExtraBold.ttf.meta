@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 31a401a1721e7b3458a9f7c48416fdcf
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Merriweather 24pt
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 20f429aed79fcb04989eac58ccc5747f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
