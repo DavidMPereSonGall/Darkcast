@@ -358,7 +358,7 @@ public class EnemyAIHandler
         {
             var diff = (otherPosition - destination);
             var sqrMagnitude = diff.sqrMagnitude;
-            var clamp = Mathf.Clamp(sqrMagnitude, 0.1f,6);
+            var clamp = Mathf.Clamp(sqrMagnitude, 0.1f,1);
             destination -= diff.normalized * (1f/clamp);
         }
 
@@ -1473,6 +1473,8 @@ public class GameManagerScript : MonoBehaviour
 
     private int enemyAmount = 1;
 
+    private List<Card> playerCards = new List<Card>();
+
     void Start()
     {
         gameEntityResources = Resources.LoadAll<GameEntity>("Entities");
@@ -1507,7 +1509,7 @@ public class GameManagerScript : MonoBehaviour
             {
                 foreach (var cardId in gameEntityResources[i].cardIds)
                 {
-                    entities[mainEntityUuid].deck.cards.Add(LoadCard(cardId));
+                    playerCards.Add(LoadCard(cardId));
                 }
                 break;
             }
@@ -1515,6 +1517,8 @@ public class GameManagerScript : MonoBehaviour
 
         teamHitCollisions.Add(new HitCollidersContainer());
         teamHitCollisions.Add(new HitCollidersContainer());
+
+        SpawnEnemy();
 
         SimulationStep();
     }
@@ -2489,10 +2493,8 @@ public class GameManagerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            var cards = entities[mainEntityUuid].deck.cards;
-            Debug.Log(cards.Count);
-            var rand = UnityEngine.Random.Range(0, cards.Count);
-            var testCardCont = CreateNewCardContainer(cards[rand]);
+            var rand = UnityEngine.Random.Range(0, playerCards.Count);
+            var testCardCont = CreateNewCardContainer(playerCards[rand]);
             deckHandler.AddCardContainer(testCardCont);
         }
 
