@@ -766,6 +766,7 @@ public class Entity
     public void MoveTo(float xPos, float yPos)
     {
         this.position = new Vector2(xPos, yPos);
+        this.entityCircle.transform.position = new Vector3(xPos, 0.1f, yPos);
         this.gameObject.transform.position = new Vector3(xPos, modelHeight, yPos);
     }
 
@@ -1521,6 +1522,8 @@ public class GameManagerScript : MonoBehaviour
         SpawnEnemy();
 
         SimulationStep();
+
+        DrawCards();
     }
 
     Card LoadCard(string cardId)
@@ -1811,39 +1814,75 @@ public class GameManagerScript : MonoBehaviour
 
     }
 
+    void DrawRandomCard()
+    {
+        var rand = UnityEngine.Random.Range(0, playerCards.Count);
+        var testCardCont = CreateNewCardContainer(playerCards[rand]);
+        deckHandler.AddCardContainer(testCardCont);
+    }
+
+    void DrawCards()
+    {
+        var currCardAmount = deckHandler.cardContainers.Count;
+        for (int i = 1; i <= (5-currCardAmount); i++)
+        {
+            DrawRandomCard();
+        }
+    }
+
+    void SpawnEnemies()
+    {
+        PlaySound("dark");
+        for (int i = 0; i < enemyAmount; i++)
+        {
+            SpawnEnemy();
+        }
+
+        enemyAmount = Mathf.Clamp(enemyAmount+1, 1, 3);
+    }
+
     void SpawnEnemy()
     {
-        var random = UnityEngine.Random.Range(0, gameEntityResources.Length);
+        var enemies = new List<GameEntity>();
 
-        var enemyResource = gameEntityResources[random];
-
-        if (enemyResource.entityId != "condemned")
+        foreach (var entityResource in gameEntityResources)
         {
-            var x = UnityEngine.Random.Range(-8, 9);
-            var y = UnityEngine.Random.Range(-8, 9);
-            var enemyUuid = CreateNewEntity(enemyResource.modelId, x,y,1);
-            entities[enemyUuid].speed = enemyResource.speed;
-            entities[enemyUuid].friction = enemyResource.friction;
-            entities[enemyUuid].radius = enemyResource.radius;
-            entities[enemyUuid].modelHeight = enemyResource.modelHeight;
-            entities[enemyUuid].health = enemyResource.maxHealth;
-            entities[enemyUuid].maxHealth = enemyResource.maxHealth;
-            var idle = LoadAnimation(enemyResource.animations[0]);
-            var walk = LoadAnimation(enemyResource.animations[1]);
-            var hit = LoadAnimation(enemyResource.animations[2]);
-            entities[enemyUuid].animator.AddAnimation("idle", idle);
-            entities[enemyUuid].animator.AddAnimation("walk", walk);
-            entities[enemyUuid].animator.AddAnimation("hit", hit);
-            entities[enemyUuid].animator.SetState(0);
-            entities[enemyUuid].targetUuid = mainEntityUuid;
-
-            foreach (var cardId in enemyResource.cardIds)
+            if (entityResource.entityId != "condemned")
             {
-                entities[enemyUuid].deck.cards.Add(LoadCard(cardId));
+                enemies.Add(entityResource);
             }
         }
 
-        
+        var random = UnityEngine.Random.Range(0, enemies.Count);
+
+        var enemyResource = enemies[random];
+
+        var x = UnityEngine.Random.Range(-8, 9);
+        var y = UnityEngine.Random.Range(-8, 9);
+        var enemyUuid = CreateNewEntity(enemyResource.modelId, x, y, 1);
+        entities[enemyUuid].speed = enemyResource.speed;
+        entities[enemyUuid].friction = enemyResource.friction;
+        entities[enemyUuid].radius = enemyResource.radius;
+        entities[enemyUuid].modelHeight = enemyResource.modelHeight;
+        entities[enemyUuid].health = enemyResource.maxHealth;
+        entities[enemyUuid].maxHealth = enemyResource.maxHealth;
+        var idle = LoadAnimation(enemyResource.animations[0]);
+        var walk = LoadAnimation(enemyResource.animations[1]);
+        var hit = LoadAnimation(enemyResource.animations[2]);
+        entities[enemyUuid].animator.AddAnimation("idle", idle);
+        entities[enemyUuid].animator.AddAnimation("walk", walk);
+        entities[enemyUuid].animator.AddAnimation("hit", hit);
+        entities[enemyUuid].animator.SetState(0);
+        entities[enemyUuid].targetUuid = mainEntityUuid;
+
+        foreach (var cardId in enemyResource.cardIds)
+        {
+            entities[enemyUuid].deck.cards.Add(LoadCard(cardId));
+        }
+
+        entities[enemyUuid].MoveTo(x, y);
+        entities[enemyUuid].animator.Step();
+
     }
 
     void PresetLevel()
@@ -1968,7 +2007,6 @@ public class GameManagerScript : MonoBehaviour
 
         if (action.applyVelocity.sqrMagnitude > 0)
         {
-            Debug.Log("APPLIED");
             entity.moveVelocity += entity.targetDirection * action.applyVelocity.y + new Vector2(-entity.targetDirection.y,entity.targetDirection.x) * action.applyVelocity.x;
         }
 
@@ -1997,7 +2035,6 @@ public class GameManagerScript : MonoBehaviour
         {
             var action = entity.actionQueue[i];
             action.delay--;
-            Debug.Log(action.delay);
             if (action.delay <= 0) {
                 RunAction(entity, action);
                 entity.actionQueue.RemoveAt(i);
@@ -2051,6 +2088,7 @@ public class GameManagerScript : MonoBehaviour
                 else
                 {
                     entity.animator.SetState(0);
+                    entity.moveMode = MoveMode.MoveVelocity;
                 }
             }
             
@@ -2084,7 +2122,7 @@ public class GameManagerScript : MonoBehaviour
             if (entity.moveMode == MoveMode.MoveVelocity) {
                 var velocity = entity.moveVelocity.magnitude;
 
-                if (velocity <= -1e6f)
+                if (velocity <= 1e-6f)
                 {
                     for (int i = 0; i < colliders.Count; i++)
                     {
@@ -2451,8 +2489,11 @@ public class GameManagerScript : MonoBehaviour
             }
         } else
         {
-            if(!ranEnemyCalculation)
+            if(!ranEnemyCalculation && !gameEnded)
             {
+                DrawCards();
+
+                if (entities.Values.Count <= 1) SpawnEnemies(); 
                 foreach(var pair in entities)
                 {
                     var uuid = pair.Key;
@@ -2493,9 +2534,7 @@ public class GameManagerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.W))
         {
-            var rand = UnityEngine.Random.Range(0, playerCards.Count);
-            var testCardCont = CreateNewCardContainer(playerCards[rand]);
-            deckHandler.AddCardContainer(testCardCont);
+            DrawRandomCard();
         }
 
         if (Input.GetKeyDown(KeyCode.Q))

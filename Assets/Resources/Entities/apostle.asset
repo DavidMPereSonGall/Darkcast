@@ -10,20 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 679148906a982d345a39f1d468cedcc2, type: 3}
-  m_Name: condemned
+  m_Name: apostle
   m_EditorClassIdentifier: 
-  entityId: condemned
-  maxHealth: 30
-  speed: 4
+  entityId: apostle
+  maxHealth: 10
+  speed: 3
   radius: 0.5
   animations:
   - condemned_idle
   - condemned_walk
   - condemned_hit
   modelHeight: 0.65
-  modelId: condemned
+  modelId: apostle
   friction: 3
   cardIds:
   - test_card
-  - crush
-  - triple_poke

@@ -10,20 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12a461972f2d9a74c9b164fb2c4f1bad, type: 3}
-  m_Name: test_card
+  m_Name: skeleton_strike
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 6a1102e27d5ef234a82a96b97f6dfc16, type: 3}
+  image: {fileID: 0}
   actions:
   - delay: 0
-    swapItemId: sword
-    animationId: condemned_slash
+    swapItemId: 
+    animationId: skeleton_attack
     substitutionId: 
     faceTarget: 1
     cardColliders: []
     visualEffects: []
     applyVelocity: {x: 0, y: 0}
     soundId: 
-  - delay: 7
+  - delay: 0
+    swapItemId: 
+    animationId: skeleton_attack
+    substitutionId: 
+    faceTarget: 0
+    cardColliders: []
+    visualEffects: []
+    applyVelocity: {x: 0, y: 0}
+    soundId: 
+  - delay: 20
     swapItemId: 
     animationId: 
     substitutionId: 
@@ -31,29 +40,29 @@ MonoBehaviour:
     cardColliders:
     - duration: 2
       positions:
-      - {x: 0, y: 1}
+      - {x: 0, y: 0.5}
       radius:
-      - 1
+      - 0.5
       knockback:
-      - 4
+      - 1
       damage: 05000000
       knockbackDirection:
       - {x: 0, y: 1}
       effects: []
-      stun: 8
+      stun: 15
     visualEffects:
     - effectId: slash
       worldOffset: {x: 0, y: 0}
-      localOffset: {x: 0, y: 1}
+      localOffset: {x: 0, y: 0.75}
       onSelf: 0
       rotation: {x: 0, y: 0, z: 0, w: 0}
       boneId: 
     applyVelocity: {x: 0, y: 0}
-    soundId: slash
-  origin: 2
-  target: 1
-  title: Slash
-  desc: Attack forwards with your blade.
+    soundId: footstep
+  origin: 0
+  target: 0
+  title: skeleton_strike
+  desc: 
   comboCard: 0
   combinationCard: 0
-  delay: 15
+  delay: 45

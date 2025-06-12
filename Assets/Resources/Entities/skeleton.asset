@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 679148906a982d345a39f1d468cedcc2, type: 3}
-  m_Name: enemy_test
+  m_Name: skeleton
   m_EditorClassIdentifier: 
-  entityId: enemy_test
+  entityId: skeleton
   maxHealth: 10
-  speed: 3
+  speed: 2
   radius: 0.5
   animations:
-  - condemned_idle
-  - condemned_walk
-  - condemned_hit
+  - skeleton_idle
+  - skeleton_walk
+  - skeleton_hit
   modelHeight: 0.65
-  modelId: condemned
+  modelId: skeleton
   friction: 3
   cardIds:
-  - test_card
+  - skeleton_strike
